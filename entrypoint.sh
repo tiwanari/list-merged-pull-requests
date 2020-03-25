@@ -3,29 +3,23 @@ set -eu
 
 GITHUB_TOKEN=$0
 
-TARGET=origin/$(/find_target.rb)
-
-echo "target branch: $TARGET"
-
 git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-
 cd $(basename $GITHUB_REPOSITORY)
-CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b')
 
-echo "changes: "
+
+TARGET=origin/$(/find_target.rb)
+echo "Target branch: $TARGET"
+
+CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
+   | sed -E 's/Merge pull request (.*) from .* --- /\1: /g')
+
+echo "Changes: "
 echo "$CHANGES"
 
-FIX_FORMAT=$(echo "$CHANGES" \
-  | sed -E 's/Merge pull request (.*) from .* --- /\1: /g')
+VALID_COMMENTS=$(echo "$CHANGES" | grep -v -- '---')
 
-echo "fix format: "
-echo "$FIX_FORMAT"
-
-IGNORE_GARBAGE=$(echo "$FIX_FORMAT" \
-  | grep -v -- '---')
-
-echo "ignore garbage: "
-echo "$IGNORE_GARBAGE"
+echo "Valid comments: "
+echo "$VALID_COMMENTS"
 
 echo "Commenting..."
-/make_comment.rb "$GITHUB_TOKEN" "$IGNORE_GARBAGE"
+/make_comment.rb "$GITHUB_TOKEN" "$VALID_COMMENTS"
