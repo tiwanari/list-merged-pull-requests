@@ -19,4 +19,6 @@ merges=$(git log origin/$TARGET.. --merges --pretty=format:'* %s --- %b' \
   | sed -E 's/Merge pull request (.*) from .* --- /\1: /g' \
   | grep -v -- '---')
 
+echo "$merges"
+
 /make_comment.rb merges
