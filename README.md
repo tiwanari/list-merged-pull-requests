@@ -32,6 +32,8 @@ jobs:
     steps:
       - name: comment PR
         uses: tiwanari/list-merged-pull-requests@master
+        with:
+          token: ${{ github.token }}
 ```
 
 ## License
