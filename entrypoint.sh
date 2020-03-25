@@ -10,16 +10,13 @@ echo "target branch: $TARGET"
 whoami
 
 ls -al
-mkdir test
 
 git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
 
 ls -al
 
 cd $(basename $GITHUB_REPOSITORY)
-merges=$(git log origin/$TARGET.. --merges --pretty=format:'* %s --- %b' \
-  | sed -E 's/Merge pull request (.*) from .* --- /\1: /g' \
-  | grep -v -- '---')
+merges=$(git log origin/$TARGET.. --merges --pretty=format:'* %s --- %b' | sed -E 's/Merge pull request (.*) from .* --- /\1: /g' | grep -v -- '---')
 
 echo "$merges"
 
