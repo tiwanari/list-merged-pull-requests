@@ -7,6 +7,9 @@ TARGET=$(/find_target.rb)
 
 echo "target branch: $TARGET"
 
+ls -al
+mkdir test
+
 git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 
 cd $(basename $GITHUB_REPOSITORY)
