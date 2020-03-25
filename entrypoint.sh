@@ -3,11 +3,16 @@ set -eu
 
 GITHUB_TOKEN=$1
 
+if [ $GITHUB_EVENT_NAME != 'pull_request' ]; then
+  echo "This action only supports Pull Request events"
+  exit 1
+fi
+
+
 git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-cd $(basename $GITHUB_REPOSITORY)
+cd $(basename "$GITHUB_REPOSITORY")
 
-
-TARGET=origin/$(/find_target.rb)
+TARGET=origin/$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.base.ref')
 echo "Target branch: $TARGET"
 
 CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \

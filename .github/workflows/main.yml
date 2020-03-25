@@ -10,6 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Comment on PR
-        uses: tiwanari/list-merged-pull-requests@master
+        uses: tiwanari/list-merged-pull-requests@develop
         with:
           token: ${{ github.token }}
