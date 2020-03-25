@@ -31,5 +31,3 @@ jobs:
       - name: comment PR
         uses: tiwanari/list-merged-pull-requests@master
 ```
-
-
