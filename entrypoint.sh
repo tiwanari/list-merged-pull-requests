@@ -12,7 +12,7 @@ fi
 git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 cd $(basename "$GITHUB_REPOSITORY")
 
-TARGET=origin/$(cat $GITHUB_EVENT_PATH | jq '.pull_request.base.ref')
+TARGET=origin/$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.base.ref')
 echo "Target branch: $TARGET"
 
 CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
