@@ -10,7 +10,7 @@ You can see an example [here](https://github.com/tiwanari/list-merged-pull-reque
 
 ## Supported actions
 - event: `pull_request`
-- action: `opened`
+- action: `opened` is recommended (to avoid duplicated comments)
 
 ## Inputs
 
