@@ -3,7 +3,6 @@ name: example
 on:
   pull_request:
     types: [opened]
-    branches: [master]
 
 jobs:
   example:
