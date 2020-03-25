@@ -1,7 +1,8 @@
 FROM ruby:2.7.0-alpine
 
-RUN apt-get update -y && \
-    apt-get install -y --no-install-recommends git
+RUN apk update && \
+    apk upgrade && \
+    apk add --no-cache git
 
 RUN gem install octokit
 
