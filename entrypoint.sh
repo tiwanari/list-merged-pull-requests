@@ -1,6 +1,8 @@
 #!/bin/sh -l
 set -eu
 
+export GITHUB_TOKEN=$0
+
 TARGET=$(/find_target.rb)
 
 echo "target branch: $TARGET"
