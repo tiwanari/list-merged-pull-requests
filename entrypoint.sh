@@ -7,7 +7,7 @@ TARGET=origin/$(/find_target.rb)
 
 echo "target branch: $TARGET"
 
-git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY} || true
+git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 
 cd $(basename $GITHUB_REPOSITORY)
 CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b')
