@@ -3,12 +3,11 @@ name: example
 on:
   pull_request:
     types: [opened]
-    branches: [master]
 
 jobs:
   example:
     name: release management comment
     runs-on: ubuntu-latest
     steps:
-      - name: comment PR
-        uses: tiwanari/list-merged-pull-requests@master
+      - name: Comment on PR
+        uses: tiwanari/list-merged-pull-requests@test
