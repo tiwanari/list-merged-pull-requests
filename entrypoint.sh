@@ -16,9 +16,22 @@ git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git || true
 ls -al
 
 cd $(basename $GITHUB_REPOSITORY)
-merges=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
-  | sed -E 's/Merge pull request (.*) from .* --- /\1: /g' \
+CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b')
+
+echo "changes: "
+echo "$CHANGES"
+
+FIX_FORMAT=$(echo "$CHANGES" \
+  | sed -E 's/Merge pull request (.*) from .* --- /\1: /g')
+
+echo "fix format: "
+echo "$FIX_FORMAT"
+
+IGNORE_GARBAGE=$(echo "$FIX_FORMAT" \
   | grep -v -- '---')
+
+echo "ignore garbage: "
+echo "$IGNORE_GARBAGE"
 
 echo "Commenting..."
 /make_comment.rb "$merges"
