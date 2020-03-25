@@ -1,0 +1,9 @@
+name: 'List Merged Pull Requests'
+author: 'Tatsuya "Nari" Iwanari <tatsuyaw0c@gmail.com>'
+description: 'List merged pull requests on the source branch'
+branding:
+  icon: 'list'
+  color: 'white'
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
