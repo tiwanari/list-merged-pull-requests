@@ -17,7 +17,7 @@ This action lists merged requests on the source branch when a PR is created.
 
 None
 
-### Sample workflow
+## Sample workflow
 
 ```
 name: list-merged-pull-requests example
@@ -27,10 +27,10 @@ on:
     branches: [master]
 jobs:
   example:
-    name: release management comment
+    name: Release management comment
     runs-on: ubuntu-latest
     steps:
-      - name: comment PR
+      - name: Comment PR
         uses: tiwanari/list-merged-pull-requests@master
         with:
           token: ${{ github.token }}
