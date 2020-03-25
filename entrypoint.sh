@@ -1,7 +1,7 @@
 #!/bin/sh -l
 set -eu
 
-export GITHUB_TOKEN=$0
+GITHUB_TOKEN=$0
 
 TARGET=origin/$(/find_target.rb)
 
@@ -34,4 +34,4 @@ echo "ignore garbage: "
 echo "$IGNORE_GARBAGE"
 
 echo "Commenting..."
-/make_comment.rb "$IGNORE_GARBAGE"
+/make_comment.rb "$GITHUB_TOKEN" "$IGNORE_GARBAGE"
