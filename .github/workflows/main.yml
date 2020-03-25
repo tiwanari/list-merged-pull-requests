@@ -9,11 +9,7 @@ jobs:
     name: Release management comment
     runs-on: ubuntu-latest
     steps:
-      - name: Dump GitHub context
-        env:
-          GITHUB_CONTEXT: ${{ toJson(github) }}
-        run: echo "$GITHUB_CONTEXT"
       - name: Comment on PR
-        uses: tiwanari/list-merged-pull-requests@hotfix/comment
+        uses: tiwanari/list-merged-pull-requests@master
         with:
           token: ${{ github.token }}
