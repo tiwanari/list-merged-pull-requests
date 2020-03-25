@@ -1,4 +1,7 @@
-FROM circleci/ruby:2.7.0
+FROM ruby:2.7.0-alpine
+
+RUN apt-get update -y && \
+    apt-get install -y --no-install-recommends git
 
 RUN gem install octokit
 
