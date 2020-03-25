@@ -1,13 +1,11 @@
 #!/bin/sh -l
+set -eu
 
-TARGET=$(sh ./find_target.rb)
-
-cd $HOME
+CURRENT_DIR=$(pwd)
+TARGET=$($CURRENT_DIR/find_target.rb)
 
 merges=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
   | sed -E 's/Merge pull request (.*) from .* --- /\1: /g' \
   | grep -v -- '---')
 
-cd -
-
-sh ./make_comment.rb merges
+$CURRENT_DIR/make_comment.rb merges
