@@ -24,9 +24,5 @@ VALID_COMMENTS=$(echo "$CHANGES" | grep -v -- '---')
 echo "Valid comments: "
 echo "$VALID_COMMENTS"
 
-IGNORED_COMMENTS=$(echo "$CHANGES" | grep -- '---')
-echo "Ignored comments: "
-echo "$IGNORED_COMMENTS"
-
 echo "Commenting..."
 /make_comment.rb "$GITHUB_TOKEN" "$VALID_COMMENTS"
