@@ -1,7 +1,12 @@
 List Merged Pull Requests
 ===
 
-This action lists merged requests on the source branch when a PR is created.  
+This action lists merged requests on the source branch when a PR is created. 
+
+## Example
+You can see an example [here](https://github.com/tiwanari/list-merged-pull-requests/pull/30).
+
+![comment_from_bot](./docs/comment_from_bot.png)
 
 ## Supported actions
 - event: `pull_request`
