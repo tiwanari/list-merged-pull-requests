@@ -7,6 +7,8 @@ TARGET=$(/find_target.rb)
 
 echo "target branch: $TARGET"
 
+whoami
+
 ls -al
 mkdir test
 
