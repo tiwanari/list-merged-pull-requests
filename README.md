@@ -17,7 +17,7 @@ This action lists merged requests on the source branch when a PR is created.
 
 None
 
-### Sample workflow
+## Sample workflow
 
 ```
 name: list-merged-pull-requests example
