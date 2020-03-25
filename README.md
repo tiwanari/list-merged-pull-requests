@@ -27,10 +27,10 @@ on:
     branches: [master]
 jobs:
   example:
-    name: release management comment
+    name: Release management comment
     runs-on: ubuntu-latest
     steps:
-      - name: comment PR
+      - name: Comment PR
         uses: tiwanari/list-merged-pull-requests@master
         with:
           token: ${{ github.token }}
