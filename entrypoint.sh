@@ -15,7 +15,7 @@ mkdir test
 git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 
 cd $(basename $GITHUB_REPOSITORY)
-merges=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
+merges=$(git log origin/$TARGET.. --merges --pretty=format:'* %s --- %b' \
   | sed -E 's/Merge pull request (.*) from .* --- /\1: /g' \
   | grep -v -- '---')
 
