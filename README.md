@@ -9,7 +9,9 @@ This action lists merged requests on the source branch when a PR is created.
 
 ## Inputs
 
-None
+### `token`
+
+**Required** The GitHub Access Token.
 
 ## Outputs
 

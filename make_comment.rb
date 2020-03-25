@@ -2,13 +2,15 @@
 require 'json'
 require 'octokit'
 
-if ARGV.empty?
-  puts 'Missing message argument'
-  exit 1
+github_token = ARGV[0]
+message = ARGV[1].strip
+
+if message.empty?
+  puts 'No merged pull requests'
+  exit 0
 end
-message = ARGV[0]
 
 event = JSON.parse(File.read(ENV.fetch('GITHUB_EVENT_PATH')))
 
-GITHUB = Octokit::Client.new(access_token: ENV.fetch('GITHUB_TOKEN'))
-GITHUB.add_comment(event['repository']['full_name'], event['number'], message)
+GITHUB = Octokit::Client.new(access_token: github_token)
+GITHUB.add_comment(ENV.fetch('GITHUB_REPOSITORY'), event['number'], message)
