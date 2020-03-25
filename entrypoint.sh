@@ -21,4 +21,4 @@ merges=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
   | grep -v -- '---')
 
 echo "Commenting..."
-/make_comment.rb $merges
+/make_comment.rb "$merges"
