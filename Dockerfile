@@ -7,7 +7,7 @@ RUN apk update && \
 RUN gem install octokit
 
 COPY entrypoint.sh /entrypoint.sh
-COPY find_target.rb /find_target.rb
-COPY make_comment.rb /make_comment.rb
+COPY src/find_target.rb /find_target.rb
+COPY src/make_comment.rb /make_comment.rb
 
 ENTRYPOINT ["/entrypoint.sh"]
