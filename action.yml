@@ -4,6 +4,12 @@ description: 'List merged pull requests on the source branch'
 branding:
   icon: 'list'
   color: 'white'
+inputs:
+  token:
+    description: The GitHub Access Token
+    required: true
 runs:
   using: 'docker'
   image: 'Dockerfile'
+  args:
+    - ${{ inputs.token }}
