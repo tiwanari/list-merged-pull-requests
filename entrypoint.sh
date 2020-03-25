@@ -34,4 +34,4 @@ echo "ignore garbage: "
 echo "$IGNORE_GARBAGE"
 
 echo "Commenting..."
-/make_comment.rb "$merges"
+/make_comment.rb "$IGNORE_GARBAGE"
