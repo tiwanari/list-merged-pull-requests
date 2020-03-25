@@ -2,7 +2,7 @@ FROM circleci/ruby:2.7.0
 
 RUN gem install octokit
 
-ENV APP_ROOT $HOME
+ENV APP_ROOT /var/workflow
 WORKDIR $APP_ROOT
 
 COPY entrypoint.sh $APP_ROOT/entrypoint.sh
