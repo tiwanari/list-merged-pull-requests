@@ -20,9 +20,5 @@ merges=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
   | sed -E 's/Merge pull request (.*) from .* --- /\1: /g' \
   | grep -v -- '---')
 
-if test -z $merges; then
-  echo "No new merge requests on $TARGET"
-else
-  echo "Commenting..."
-  /make_comment.rb merges
-fi
+echo "Commenting..."
+/make_comment.rb $merges

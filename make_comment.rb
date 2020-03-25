@@ -3,8 +3,8 @@ require 'json'
 require 'octokit'
 
 if ARGV.empty?
-  puts 'Missing message argument'
-  exit 1
+  puts 'No merged pull requests'
+  exit 0
 end
 message = ARGV[0]
 
