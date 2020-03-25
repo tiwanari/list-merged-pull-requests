@@ -2,7 +2,7 @@
 require 'json'
 require 'octokit'
 
-github_token = ARGV[0]
+github_token = ARGV[0].strip
 message = ARGV[1].strip
 
 if message.empty?
