@@ -25,4 +25,5 @@ echo "Valid comments: "
 echo "$VALID_COMMENTS"
 
 echo "Commenting..."
-/make_comment.rb "$GITHUB_TOKEN" "$VALID_COMMENTS"
+PR_NUMBER=$(cat $GITHUB_EVENT_PATH | jq -r '.number')
+/make_comment.rb "$GITHUB_REPOSITORY" "$PR_NUMBER" "$GITHUB_TOKEN" "$VALID_COMMENTS"

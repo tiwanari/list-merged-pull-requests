@@ -1,16 +1,24 @@
 #!/usr/bin/env ruby
-require 'json'
+# frozen_string_literal: true
+
 require 'octokit'
 
-github_token = ARGV[0].strip
-message = ARGV[1].strip
+if ARGV.length < 4
+  puts 'Too few arguments'
+  puts "Usage: #{__FILE__} repository number token message"
+  exit 1
+end
+
+args = ARGV.map(&:strip)
+repository = args[0]
+number = args[1]
+token = args[2]
+message = args[3]
 
 if message.empty?
   puts 'No merged pull requests'
   exit 0
 end
 
-event = JSON.parse(File.read(ENV.fetch('GITHUB_EVENT_PATH')))
-
-GITHUB = Octokit::Client.new(access_token: github_token)
-GITHUB.add_comment(ENV.fetch('GITHUB_REPOSITORY'), event['number'], message)
+GITHUB = Octokit::Client.new(access_token: token)
+GITHUB.add_comment(repository, number, message)
