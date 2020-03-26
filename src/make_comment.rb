@@ -4,8 +4,9 @@
 require 'octokit'
 
 if ARGV.length < 4
-  puts 'Too few arguments'
+  puts 'Error: Too few arguments'
   puts "Usage: #{__FILE__} repository number token message"
+  puts "e.g., #{__FILE__} tiwanari/list-merged-pull-requests 44 *** \"hello\""
   exit 1
 end
 
