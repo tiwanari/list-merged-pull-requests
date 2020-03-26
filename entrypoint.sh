@@ -9,7 +9,7 @@ if [ $GITHUB_EVENT_NAME != 'pull_request' ]; then
 fi
 
 
-git clone https://${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+git clone https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
 cd $(basename "$GITHUB_REPOSITORY")
 
 TARGET=origin/$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.base.ref')
