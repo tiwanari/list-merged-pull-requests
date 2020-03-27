@@ -24,7 +24,7 @@ None
 
 ## Sample workflow
 
-```
+```yml
 name: list-merged-pull-requests example
 on:
   pull_request:
