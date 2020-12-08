@@ -15,7 +15,7 @@ cd $(basename "$GITHUB_REPOSITORY")
 TARGET=origin/$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.base.ref')
 echo "Target branch: $TARGET"
 
-CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
+CHANGES=$(git log $TARGET.. --merges --pretty=format:'* [ ] %s --- %b' \
    | sed -E 's/Merge pull request (.*) from .* --- /\1: /g')
 echo "Changes: "
 echo "$CHANGES"
