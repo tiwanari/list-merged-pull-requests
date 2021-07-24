@@ -20,7 +20,8 @@ CHANGES=$(git log $TARGET.. --merges --pretty=format:'* [ ] %s' \
 echo "Changes: "
 echo "$CHANGES"
 
-VALID_COMMENTS=$(echo "$CHANGES" | grep -v -- '---')
+# Ignore branch merges
+VALID_COMMENTS=$(echo "$CHANGES" | grep -v -- 'Merge branch ')
 echo "Valid comments: "
 echo "$VALID_COMMENTS"
 
