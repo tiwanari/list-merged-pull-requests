@@ -1,16 +1,16 @@
 List Merged Pull Requests
 ===
 
-This action lists merged pull requests on the source branch when a pull request is created.
+This action lists merged pull requests on the source branch when a pull request is created as you configure.
 
 ## Example
-You can see an example [here](https://github.com/tiwanari/list-merged-pull-requests/pull/30).
+You can see an example [here](https://github.com/tiwanari/list-merged-pull-requests/pull/55).
 
 ![comment_from_bot](./docs/comment_from_bot.png)
 
 ## Supported actions
 - event: `pull_request`
-- action: `opened` is recommended (to avoid duplicated comments)
+- action: `opened` and `synchronized` are recommended
 
 ## Inputs
 
@@ -24,12 +24,12 @@ None
 
 ## Sample workflow
 
-```
+```yml
 name: list-merged-pull-requests example
 on:
   pull_request:
-    types: [opened]
-    branches: [master]
+    types: [opened, synchronize]
+    branches: [main]
 jobs:
   example:
     name: Release management comment

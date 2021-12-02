@@ -15,12 +15,13 @@ cd $(basename "$GITHUB_REPOSITORY")
 TARGET=origin/$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.base.ref')
 echo "Target branch: $TARGET"
 
-CHANGES=$(git log $TARGET.. --merges --pretty=format:'* %s --- %b' \
-   | sed -E 's/Merge pull request (.*) from .* --- /\1: /g')
+CHANGES=$(git log $TARGET.. --merges --pretty=format:'* [ ] %s' \
+   | sed -E 's/Merge pull request (.*) from .*/\1 /g')
 echo "Changes: "
 echo "$CHANGES"
 
-VALID_COMMENTS=$(echo "$CHANGES" | grep -v -- '---')
+# Ignore branch merges
+VALID_COMMENTS=$(echo "$CHANGES" | grep -v -- 'Merge branch ')
 echo "Valid comments: "
 echo "$VALID_COMMENTS"
 
