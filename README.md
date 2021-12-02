@@ -4,7 +4,7 @@ List Merged Pull Requests
 This action lists merged pull requests on the source branch when a pull request is created as you configure.
 
 ## Example
-You can see an example [here](https://github.com/tiwanari/list-merged-pull-requests/pull/54).
+You can see an example [here](https://github.com/tiwanari/list-merged-pull-requests/pull/55).
 
 ![comment_from_bot](./docs/comment_from_bot.png)
 
