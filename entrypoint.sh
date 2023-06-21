@@ -14,8 +14,10 @@ cd $(basename "$GITHUB_REPOSITORY")
 
 TARGET=origin/$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.base.ref')
 echo "Target branch: $TARGET"
+SOURCE=origin/$(cat $GITHUB_EVENT_PATH | jq -r '.pull_request.head.ref')
+echo "Source branch: $SOURCE"
 
-CHANGES=$(git log $TARGET.. --first-parent --pretty=format:'%s' \
+CHANGES=$(git log $TARGET..$SOURCE --first-parent --pretty=format:'%s' \
    | sed -E 's/.*(#[0-9]+).*/\* \[ \] \1/g')
 echo "Changes: "
 echo "$CHANGES"
