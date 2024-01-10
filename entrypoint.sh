@@ -23,7 +23,7 @@ echo "Changes: "
 echo "$CHANGES"
 
 # Ignore branch merges
-VALID_COMMENTS=$(echo "$CHANGES" | grep '^\* \[ \] #[0-9]\+$')
+VALID_COMMENTS=$(echo "$CHANGES" | grep '^\* \[ \] #[0-9]\+$' || echo "")
 echo "Valid comments: "
 echo "$VALID_COMMENTS"
 
